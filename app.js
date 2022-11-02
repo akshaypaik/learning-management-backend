@@ -32,7 +32,8 @@ app.use(cors({
     credentials: true,
     origin: [
         "http://localhost:4200",
-        "http://learning-management-frontend.s3-website.ap-south-1.amazonaws.com"
+        "http://learning-management-frontend.s3-website.ap-south-1.amazonaws.com",
+        "http://learning-management-frontend-v2.s3-website.ap-south-1.amazonaws.com"
     ]
 }));
 app.use(express.urlencoded({ extended: false }));
