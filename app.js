@@ -1,29 +1,33 @@
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
+//const session = require("express-session");
+//const MongoStore = require("connect-mongo");
+const cookieParser = require("cookie-parser");
 const router = require("./router");
 
-let sessionOptions = session({
-    secret: "lms is amazing",
-    store: MongoStore.create({
-        client: require("./db")
-    }),
-    saveUninitialized: true,
-    resave: false,
-    proxy: true,
-    name: "learningManagementCookie",
-    cookie: {
-        maxAge: 1000 * 60* 60* 24,
-        httpOnly: true,
-        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === "production"
-    }
-});
+// let sessionOptions = session({
+//     secret: "lms is amazing",
+//     store: MongoStore.create({
+//         client: require("./db")
+//     }),
+//     saveUninitialized: true,
+//     resave: false,
+//     proxy: true,
+//     name: "learningManagementCookie",
+//     cookie: {
+//         maxAge: 1000 * 60* 60* 24,
+//         httpOnly: true,
+//         sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+//         secure: process.env.NODE_ENV === "production"
+//     }
+// });
 
 const app = express();
 
-app.use(sessionOptions);
+//app.use(sessionOptions);
+app.use(cookieParser());
+
+
 app.use(cors({
     credentials: true,
     origin: [

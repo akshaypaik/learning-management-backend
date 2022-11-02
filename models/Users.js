@@ -1,4 +1,5 @@
 const userCollection = require("../db").db().collection("users");
+const jwt = require("jsonwebtoken");
 
 let User = function(userDetails) {
     this.userDetails = userDetails;
